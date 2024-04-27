@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Prediction</title>
+    <style>
+        body, html {
+            font-family: 'Ubuntu Mono Nerd Font', monospace;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: scroll; /* Add scroll bar for the entire webpage */
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Increased max-width */
+            width: 90%; /* Adjusted width */
+            margin: 50px auto; /* Centered the container */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        form {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555555;
+            font-size: 20px;
+            width: 45%;
+        }
+
+        input[type="number"] {
+            width: 45%;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border: none;
+            background-color: transparent;
+            font-size: 16px;
+            -moz-appearance: textfield;
+            appearance: textfield;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-bottom: 1px solid #555;
+        }
+
+        input[type="number"]::placeholder {
+            text-align: center;
+        }
+
+        input[type="number"]:not(:placeholder-shown) {
+            border-bottom: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007bff;
+            font-size: 21px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wind Speed Prediction</h1>
+
+        <form action="/submitform" method="post" enctype="multipart/form-data">
+            <label for="LAT">LAT:</label>
+            <input type="number" name="LAT" required placeholder="Type here" step="0.01">
+            <label for="LON">LON:</label>
+            <input type="number" name="LON" required placeholder="Type here" step="0.01">
+            <label for="YEAR">YEAR:</label>
+            <input type="number" name="YEAR" required placeholder="Type here" step="0.01">
+            <label for="DOY">DOY:</label>
+            <input type="number" name="DOY" required placeholder="Type here" step="0.01">
+            <label for="T2M">T2M:</label>
+            <input type="number" name="T2M" required placeholder="Type here" step="0.01">
+            <label for="TS">TS:</label>
+            <input type="number" name="TS" required placeholder="Type here" step="0.01">
+            <label for="QV2M">QV2M:</label>
+            <input type="number" name="QV2M" required placeholder="Type here" step="0.01">
+            <label for="RH2M">RH2M:</label>
+            <input type="number" name="RH2M" required placeholder="Type here" step="0.01">
+            <label for="PRECTOTCORR">PRECTOTCORR:</label>
+            <input type="number" name="PRECTOTCORR" required placeholder="Type here" step="0.01">
+            <label for="PS">PS:</label>
+            <input type="number" name="PS" required placeholder="Type here" step="0.01">
+            <label for="WS10M">WS10M:</label>
+            <input type="number" name="WS10M" required placeholder="Type here" step="0.01">
+            <label for="WD10M">WD10M:</label>
+            <input type="number" name="WD10M" required placeholder="Type here" step="0.01">
+            <label for="WD50M">WD50M:</label>
+            <input type="number" name="WD50M" required placeholder="Type here" step="0.01">
+            <input type="submit" name="predict" value="Predict!">
+        </form>
+        <p>Predicted Wind Speed at 50M : {{ prediction }}</p>
+    </div>
+</body>
+</html>
